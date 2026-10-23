@@ -1,7 +1,189 @@
 {
   "schemaVersion": 1,
-  "commit": "80d2270e05fc7630c76d2f63f3c93a7631480865",
+  "commit": "462ef1632ad8f60d9164050907fb90fa4c9af083",
   "claims": [
+    {
+      "id": "3025d47a732c",
+      "page": "README.md",
+      "statement": "> **Estado:** la simulación arranca, pero el sub solo controla la profundidad (`pid_controller.cpp:25-30`) · `real.launch.py` está sin probar (`real.launch.py:1-2`) · el detector no tiene modelo (`detector.py:21`). Detalle completo en [estado real del código](openwiki/operations/estado.md).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          25,
+          30
+        ],
+        "sha256": "99924389dee39b9be1065f7c4bfc87cfeed9588771d227b6a7d58138cca4187e"
+      }
+    },
+    {
+      "id": "ae5a85d722b9",
+      "page": "README.md",
+      "statement": "> **Estado:** la simulación arranca, pero el sub solo controla la profundidad (`pid_controller.cpp:25-30`) · `real.launch.py` está sin probar (`real.launch.py:1-2`) · el detector no tiene modelo (`detector.py:21`). Detalle completo en [estado real del código](openwiki/operations/estado.md).",
+      "evidence": {
+        "path": "src/x_bringup/launch/real.launch.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "08ec9bc233e6dd0fb30c9dd400e5fd51df20d234239fd3315b8e2ef39a617658"
+      }
+    },
+    {
+      "id": "afd167d99388",
+      "page": "README.md",
+      "statement": "> **Estado:** la simulación arranca, pero el sub solo controla la profundidad (`pid_controller.cpp:25-30`) · `real.launch.py` está sin probar (`real.launch.py:1-2`) · el detector no tiene modelo (`detector.py:21`). Detalle completo en [estado real del código](openwiki/operations/estado.md).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          21,
+          21
+        ],
+        "sha256": "f8056a30aa654c0894afc8bcf18ce153bda9e8dfa1217add0403f6bad47109dc"
+      }
+    },
+    {
+      "id": "541ea06b8fd8",
+      "page": "README.md",
+      "statement": "[`x_interfaces`](openwiki/packages/x_interfaces.md) | Mensajes `Waypoint`, `Detection` y servicio `SetMission` (`CMakeLists.txt:6-11`) | — | ✅ en uso |",
+      "evidence": {
+        "path": "src/x_interfaces/CMakeLists.txt",
+        "lines": [
+          6,
+          11
+        ],
+        "sha256": "b644d866b8b3c8bb2653bfece0fbd7b0f682c652b6b5ff20a1d15e43c0fef8bb"
+      }
+    },
+    {
+      "id": "6e7635e09173",
+      "page": "README.md",
+      "statement": "[`x_mission`](openwiki/packages/x_mission.md) | Recorre los pasos de `missions/*.yaml` (`mission_handler.py:43-60`) | `mission_handler` | ⚠️ avanza sin esperar a llegar (`mission_handler.py:58-60`) |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          43,
+          60
+        ],
+        "sha256": "7334b39d5c23b05a99982a605b46de4099fde9ca3f08ae95d711f7efff25466f"
+      }
+    },
+    {
+      "id": "c0a264fcea82",
+      "page": "README.md",
+      "statement": "[`x_mission`](openwiki/packages/x_mission.md) | Recorre los pasos de `missions/*.yaml` (`mission_handler.py:43-60`) | `mission_handler` | ⚠️ avanza sin esperar a llegar (`mission_handler.py:58-60`) |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          58,
+          60
+        ],
+        "sha256": "45943b5dca2eb9382cd544f64f8ca43a9a73c2e9909e51628029e2eae723c0e5"
+      }
+    },
+    {
+      "id": "ec5fb619e294",
+      "page": "README.md",
+      "statement": "[`x_navigation`](openwiki/packages/x_navigation.md) | Convierte waypoints en setpoints (`waypoint_follower.py:35-43`) | `waypoint_follower` | ✅ en uso |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          35,
+          43
+        ],
+        "sha256": "7cdd00f50de4b62a7edaa89fe9002597c663ca2c18987c9b4c3f38fdb9621b8a"
+      }
+    },
+    {
+      "id": "a9aabd17a6f2",
+      "page": "README.md",
+      "statement": "| | `old_planner` | 🪦 obsoleto (`old_planner.py:1-2`) |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "c7cdc17f3f51bbb402bbbcaaa1e7f08cd0e86dceb31b1d77e1518ee381efe2e0"
+      }
+    },
+    {
+      "id": "4248931c9ae9",
+      "page": "README.md",
+      "statement": "[`x_control`](openwiki/packages/x_control.md) | PID → 6 thrusters (`pid_controller.cpp:23-31`) | `pid_controller` | ⚠️ yaw = 0 y x/y ignorados (`pid_controller.cpp:25-30`) |",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          23,
+          31
+        ],
+        "sha256": "f3f95b831ddbf410c5d2c2f37c8ea6a8d4d64fd1b14eaf99969f430f6d6b3c1c"
+      }
+    },
+    {
+      "id": "6f18cc5d4c21",
+      "page": "README.md",
+      "statement": "[`x_control`](openwiki/packages/x_control.md) | PID → 6 thrusters (`pid_controller.cpp:23-31`) | `pid_controller` | ⚠️ yaw = 0 y x/y ignorados (`pid_controller.cpp:25-30`) |",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          25,
+          30
+        ],
+        "sha256": "99924389dee39b9be1065f7c4bfc87cfeed9588771d227b6a7d58138cca4187e"
+      }
+    },
+    {
+      "id": "085a9f178d3d",
+      "page": "README.md",
+      "statement": "[`x_vision`](openwiki/packages/x_vision.md) | Detección con la cámara frontal | `detector` | ⚠️ siempre devuelve `gate` (`detector.py:23`) |",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          23,
+          23
+        ],
+        "sha256": "4148898e6945132b15eb75cbf26e6f63aa9933c1f45df89c633ffb498d0104fa"
+      }
+    },
+    {
+      "id": "446e329b4076",
+      "page": "README.md",
+      "statement": "| | `camara_vieja` | 🪦 obsoleto (`camara_vieja.py:1-2`) |",
+      "evidence": {
+        "path": "src/x_vision/x_vision/camara_vieja.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "9fccaf8fc2be21349c5ac9fe93659207871ebbce5fc579394aa661d7bfbb297b"
+      }
+    },
+    {
+      "id": "0c6ac33e86b4",
+      "page": "README.md",
+      "statement": "El servicio vuelve a cargar la misión desde el paso 0 (`mission_handler.py:32-38`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          32,
+          38
+        ],
+        "sha256": "efae247bb2ed9ee0ae4194658e3ec5c0197dae794e576d321462d1f2f6941dc3"
+      }
+    },
+    {
+      "id": "a4a94d2169bb",
+      "page": "README.md",
+      "statement": "Hoy no sirve de nada: ningún launch carga los archivos de `config/` (`sim.launch.py:11-14`). Ver [configuración](openwiki/operations/running.md).",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          11,
+          14
+        ],
+        "sha256": "d64c9be764953be9175e0785aae46b5d93d16b88774f086284872fd9a092afa9"
+      }
+    },
     {
       "id": "f91b4f3541e3",
       "page": "openwiki/architecture/overview.md",
