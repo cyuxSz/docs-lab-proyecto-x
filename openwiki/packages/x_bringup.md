@@ -1,6 +1,7 @@
 ---
 type: component
 title: x_bringup
+owner: "@cyuxSz"
 description: Launch files.
 ---
 

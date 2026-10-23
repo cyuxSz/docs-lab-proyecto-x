@@ -47,8 +47,11 @@ python tools/wiki_claims.py stamp       # se niega si quedan CAMBIADA, FALTA o F
 Si una CAMBIADA sigue siendo cierta sin editar su texto (por ejemplo, el código solo cambió de formato), usa `stamp --revisado`. Nunca uses `--revisado` sin haber leído el código citado: es la única forma de aprobar una afirmación falsa.
 Escribe `openwiki/.last-update.json` así: `{"commit": "<git rev-parse HEAD>", "date": "<YYYY-MM-DD>", "by": "claude-code /actualizar-docs"}`.
 
-## Sitio web
-El sitio (`site/` + `tools/build_site.mjs`) no tiene contenido propio: lo arma todo con `openwiki/` y `docs/arch/*.html`. Al actualizar la wiki no hay que tocarlo. Si cambias el front matter (`title`, `description`) de una página de `packages/`, eso cambia su tarjeta en la portada. Para probarlo en local: `node tools/build_site.mjs` y `python -m http.server --directory dist`.
+## Portal web
+El portal vive en otro repo (`docs-site-lab`) y no tiene contenido propio: en cada build trae `openwiki/` y `docs/arch/*.html` de este repo. Al actualizar la wiki no hay que tocarlo; el workflow `notify-docs-site` le avisa tras el merge a `main`.
+- Si cambias el front matter (`title`, `description`, `owner`) de una página de `packages/`, eso cambia su tarjeta en el portal.
+- Cada página nueva debe llevar front matter con `type`, `title`, `description` y, en `packages/`, `owner` (el @usuario responsable, igual que en `.github/CODEOWNERS`).
+- Para ver el resultado en local mientras editas: `npx openwiki@0.7.2 visualize openwiki` (recarga en vivo).
 
 ## 6. Entregar
 - Crea una rama `docs/wiki-<fecha>` y haz commit de `openwiki/`. No hagas push ni abras PR sin que el usuario lo pida.
