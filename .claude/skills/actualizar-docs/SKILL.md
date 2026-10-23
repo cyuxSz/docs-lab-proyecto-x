@@ -6,7 +6,7 @@ argument-hint: "[validar | actualizar | desde <commit>]"
 
 # Actualizar la wiki (openwiki/)
 
-La wiki imita el formato de OpenWiki, pero la mantiene Claude Code sin API externa. Antes de editar, lee `openwiki/INSTRUCTIONS.md`: ahí están el alcance y las reglas de citas.
+La wiki imita el formato de OpenWiki, pero la mantiene Claude Code sin API externa. El `README.md` raíz es el portal de la wiki: lleva citas como ella, las valida el mismo script y se actualiza con las mismas reglas (que siga siendo corto: estado, diagrama, tabla de paquetes y cómo correrlo). Antes de editar, lee `openwiki/INSTRUCTIONS.md`: ahí están el alcance y las reglas de citas.
 
 Argumento: `validar` solo reporta, sin editar. `actualizar` (el valor por defecto) valida y corrige. `desde <commit>` usa ese commit como base en lugar del de `.last-update.json`.
 
