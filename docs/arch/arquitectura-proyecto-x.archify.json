@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Proyecto X · nodos y topics en ejecución",
+    "output": "docs/arch/arquitectura-proyecto-x.html",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/cyuxSz/docs-lab-proyecto-x.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "04bd83c8c912da095fd1cddbb7e78eed275aca77"
+    }
+  },
+  "components": [
+    { "id": "camara", "type": "external", "label": "Cámara frontal", "sublabel": "sim o usb_cam (real)", "pos": [40, 40], "size": [150, 64],
+      "sources": [{ "path": "src/x_bringup/launch/real.launch.py", "line": 9, "label": "usb_cam remapeado" }] },
+    { "id": "detector", "type": "backend", "label": "detector", "sublabel": "x_vision", "tag": "sin modelo ONNX", "pos": [340, 40], "size": [150, 64],
+      "sources": [{ "path": "src/x_vision/x_vision/detector.py", "line": 8, "end_line": 25 }] },
+    { "id": "mision", "type": "backend", "label": "mission_handler", "sublabel": "x_mission", "tag": "lee missions/*.yaml", "pos": [650, 40], "size": [150, 64],
+      "sources": [{ "path": "src/x_mission/x_mission/mission_handler.py", "line": 11, "end_line": 60 }] },
+    { "id": "operador", "type": "external", "label": "Operador", "sublabel": "ros2 service call", "pos": [1000, 40], "size": [150, 64],
+      "sources": [{ "path": "src/x_mission/x_mission/mission_handler.py", "line": 21, "end_line": 38, "label": "servicio SetMission" }] },
+    { "id": "seguidor", "type": "backend", "label": "waypoint_follower", "sublabel": "x_navigation", "pos": [650, 220], "size": [150, 64],
+      "sources": [{ "path": "src/x_navigation/x_navigation/waypoint_follower.py", "line": 10, "end_line": 43 }] },
+    { "id": "pid", "type": "backend", "label": "pid_controller", "sublabel": "x_control · C++", "tag": "yaw = 0 (TODO)", "pos": [945, 220], "size": [150, 64],
+      "sources": [{ "path": "src/x_control/src/pid_controller.cpp", "line": 9, "end_line": 33 }] },
+    { "id": "odom", "type": "external", "label": "Odometría", "sublabel": "/x/odom", "pos": [650, 400], "size": [150, 64],
+      "sources": [{ "path": "src/x_navigation/x_navigation/waypoint_follower.py", "line": 20 }, { "path": "src/x_control/src/pid_controller.cpp", "line": 16, "end_line": 17 }] },
+    { "id": "thrusters", "type": "external", "label": "Thrusters", "sublabel": "6 motores", "pos": [945, 400], "size": [150, 64],
+      "sources": [{ "path": "src/x_control/src/pid_controller.cpp", "line": 18 }] },
+    { "id": "old_planner", "type": "backend", "label": "old_planner", "sublabel": "x_navigation", "tag": "obsoleto", "icon": "stop", "pos": [60, 600], "size": [150, 64],
+      "sources": [{ "path": "src/x_navigation/x_navigation/old_planner.py", "line": 1, "end_line": 27 }] },
+    { "id": "sin_sub", "type": "messagebus", "label": "/planner/goal", "sublabel": "nadie lo escucha", "pos": [360, 600], "size": [150, 64],
+      "sources": [{ "path": "src/x_navigation/x_navigation/old_planner.py", "line": 13 }] },
+    { "id": "camara_vieja", "type": "backend", "label": "camara_vieja", "sublabel": "x_vision", "tag": "obsoleto", "icon": "stop", "pos": [560, 600], "size": [150, 64],
+      "sources": [{ "path": "src/x_vision/x_vision/camara_vieja.py", "line": 1, "end_line": 14 }] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Obsoleto · ningún launch lo ejecuta", "wraps": ["old_planner", "sin_sub", "camara_vieja"] }
+  ],
+  "connections": [
+    { "id": "img", "from": "camara", "to": "detector", "label": "/x/camera/image_raw", "variant": "emphasis" },
+    { "id": "det", "from": "detector", "to": "mision", "label": "/x/vision/detections", "variant": "emphasis" },
+    { "id": "set", "from": "operador", "to": "mision", "label": "/x/mission/set", "variant": "dashed" },
+    { "id": "wp", "from": "mision", "to": "seguidor", "label": "/x/nav/waypoint", "variant": "emphasis" },
+    { "id": "sp", "from": "seguidor", "to": "pid", "label": "/x/control/setpoint", "variant": "emphasis" },
+    { "id": "cmd", "from": "pid", "to": "thrusters", "label": "/x/thrusters/cmd", "variant": "emphasis" },
+    { "id": "odom-nav", "from": "odom", "to": "seguidor", "label": "pose" },
+    { "id": "odom-pid", "from": "odom", "to": "pid", "label": "profundidad" },
+    { "id": "goal", "from": "old_planner", "to": "sin_sub", "label": "aleatorio", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "Cómo se lanza", "items": ["sim.launch.py: los 4 nodos, mission_test.yaml por defecto", "real.launch.py: agrega usb_cam; sin probar desde el cambio a waypoint_follower"] },
+    { "dot": "amber", "title": "Pendientes en el código", "items": ["mission_handler avanza de paso cada tick, sin esperar llegar", "pid_controller manda yaw = 0", "detector siempre reporta la compuerta al centro"] },
+    { "dot": "slate", "title": "Rutas fijas a cambiar", "items": ["x_navigation/config/nav.yaml → log_dir", "x_vision/config/vision.yaml → model_path"] }
+  ]
+}
