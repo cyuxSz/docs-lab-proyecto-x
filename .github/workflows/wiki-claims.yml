@@ -4,10 +4,10 @@ name: wiki-claims
 
 on:
   pull_request:
-    paths: ["src/**", "openwiki/**"]
+    paths: ["src/**", "openwiki/**", "README.md", "tools/wiki_claims.py", ".github/workflows/wiki-claims.yml"]
   push:
     branches: [main]
-    paths: ["src/**", "openwiki/**"]
+    paths: ["src/**", "openwiki/**", "README.md", "tools/wiki_claims.py", ".github/workflows/wiki-claims.yml"]
 
 permissions:
   contents: read

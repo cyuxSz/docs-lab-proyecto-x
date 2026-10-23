@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "commit": "04bd83c8c912da095fd1cddbb7e78eed275aca77",
+  "commit": "80d2270e05fc7630c76d2f63f3c93a7631480865",
   "claims": [
     {
       "id": "f91b4f3541e3",
@@ -562,9 +562,9 @@
       }
     },
     {
-      "id": "760a8e0ef7c5",
+      "id": "a424a81be0e4",
       "page": "openwiki/packages/x_control.md",
-      "statement": "Tiene dos PID, uno de profundidad y otro de yaw, con ganancias tomadas de parámetros (`pid_controller.cpp:12-13`). La clase `Pid` es un PID clásico con integral sin límite (*anti-windup*) (`pid.hpp:9-14`).",
+      "statement": "Tiene dos PID, uno de profundidad y otro de yaw, con ganancias tomadas de parámetros (`pid_controller.cpp:12-13`). La clase `Pid` es un PID clásico; la integral se acumula sin límite, es decir, **no tiene anti-windup** (`pid.hpp:9-14`).",
       "evidence": {
         "path": "src/x_control/src/pid_controller.cpp",
         "lines": [
@@ -575,9 +575,9 @@
       }
     },
     {
-      "id": "f721b004278f",
+      "id": "dabcf81c122b",
       "page": "openwiki/packages/x_control.md",
-      "statement": "Tiene dos PID, uno de profundidad y otro de yaw, con ganancias tomadas de parámetros (`pid_controller.cpp:12-13`). La clase `Pid` es un PID clásico con integral sin límite (*anti-windup*) (`pid.hpp:9-14`).",
+      "statement": "Tiene dos PID, uno de profundidad y otro de yaw, con ganancias tomadas de parámetros (`pid_controller.cpp:12-13`). La clase `Pid` es un PID clásico; la integral se acumula sin límite, es decir, **no tiene anti-windup** (`pid.hpp:9-14`).",
       "evidence": {
         "path": "src/x_control/include/x_control/pid.hpp",
         "lines": [
@@ -1131,6 +1131,19 @@
           14
         ],
         "sha256": "8c2a1054a7bd06fe3a44997c78765a377ef46ae497e604e383853b06450b3f9c"
+      }
+    },
+    {
+      "id": "f1554c6f5f9c",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Sigue registrado como ejecutable (`setup.py:20`). Si se borra el archivo, hay que borrar también esa línea.",
+      "evidence": {
+        "path": "src/x_vision/setup.py",
+        "lines": [
+          20,
+          20
+        ],
+        "sha256": "92afbfd58c4803b16b9b8320d8074751a7789d6525168425f557c421a3740492"
       }
     },
     {

@@ -42,8 +42,9 @@ En modo `validar`, detente aquí y entrega un reporte agrupado por página: qué
 ## 5. Registrar
 ```bash
 python tools/wiki_claims.py check       # debe terminar sin problemas, salvo las NUEVA que acabas de revisar
-python tools/wiki_claims.py stamp
+python tools/wiki_claims.py stamp       # se niega si quedan CAMBIADA, FALTA o FUERA
 ```
+Si una CAMBIADA sigue siendo cierta sin editar su texto (por ejemplo, el código solo cambió de formato), usa `stamp --revisado`. Nunca uses `--revisado` sin haber leído el código citado: es la única forma de aprobar una afirmación falsa.
 Escribe `openwiki/.last-update.json` así: `{"commit": "<git rev-parse HEAD>", "date": "<YYYY-MM-DD>", "by": "claude-code /actualizar-docs"}`.
 
 ## 6. Entregar

@@ -14,3 +14,4 @@ description: Detección con la cámara frontal.
 ## `camara_vieja` (obsoleto)
 - Su comentario dice que ya no se usa, porque el driver publica directo en `/x/camera/image_raw` ([`camara_vieja.py:1-2`](../../src/x_vision/x_vision/camara_vieja.py#L1-L2)).
 - Abre la cámara 0 con OpenCV y muestra una ventana; no es un nodo ROS ([`camara_vieja.py:6-14`](../../src/x_vision/x_vision/camara_vieja.py#L6-L14)).
+- Sigue registrado como ejecutable ([`setup.py:20`](../../src/x_vision/setup.py#L20)). Si se borra el archivo, hay que borrar también esa línea.
