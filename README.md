@@ -62,6 +62,7 @@ Hoy no sirve de nada: ningún launch carga los archivos de `config/` ([`sim.laun
 
 ## Documentación
 
+- **Sitio web** (portada, diagrama interactivo, estado y el visor de OpenWiki): lo construye `node tools/build_site.mjs` a partir de `openwiki/` y `docs/arch/`, y Vercel lo publica en cada push a `main` (`vercel.json`).
 - Wiki completa: [`openwiki/`](openwiki/index.md). Empieza por el [quickstart](openwiki/quickstart.md).
 - Cada afirmación de este README y de la wiki cita `archivo:línea`. El workflow `wiki-claims` falla si el código citado cambia y la documentación no.
 - Para validarla y actualizarla, usa `/actualizar-docs` en Claude Code.

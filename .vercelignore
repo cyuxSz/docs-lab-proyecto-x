@@ -1,0 +1,10 @@
+.env*
+.vercel
+dist
+.site-build
+.archify
+build
+install
+log
+docs/arch/*.json
+!docs/arch/*.archify.json

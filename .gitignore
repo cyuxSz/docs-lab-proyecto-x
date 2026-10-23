@@ -7,3 +7,8 @@ __pycache__/
 docs/arch/*.finalize*.json
 docs/arch/*.browser-check.json
 docs/arch/*.delivery*.json
+dist/
+.site-build/
+
+.vercel
+.env*
