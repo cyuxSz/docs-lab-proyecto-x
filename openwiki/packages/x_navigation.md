@@ -1,6 +1,7 @@
 ---
 type: component
 title: x_navigation
+owner: "@cyuxSz"
 description: Convierte waypoints en setpoints suavizados.
 ---
 
