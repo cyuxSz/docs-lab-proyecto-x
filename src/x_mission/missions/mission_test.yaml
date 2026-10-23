@@ -1,0 +1,7 @@
+name: square_test
+steps:
+  - {type: dive, depth: -0.5}
+  - {type: goto, x: 2.0, y: 0.0, z: -0.5}
+  - {type: goto, x: 2.0, y: 2.0, z: -0.5}
+  - {type: goto, x: 0.0, y: 2.0, z: -0.5}
+  - {type: surface}

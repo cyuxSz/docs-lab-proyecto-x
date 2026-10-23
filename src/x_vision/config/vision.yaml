@@ -1,0 +1,4 @@
+detector:
+  ros__parameters:
+    model_path: /home/alberto/modelos/gate_v3.onnx
+    confidence_threshold: 0.6

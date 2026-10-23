@@ -1,0 +1,7 @@
+name: gate_and_buoy
+steps:
+  - {type: dive, depth: -1.0}
+  - {type: search, label: gate, timeout: 30}
+  - {type: goto, x: 6.0, y: 0.0, z: -1.0}
+  - {type: search, label: buoy, timeout: 30}
+  - {type: surface}

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>x_vision</name>
+  <version>0.1.0</version>
+  <description>Deteccion de objetos con la camara frontal</description>
+  <maintainer email="equipo@example.com">equipo</maintainer>
+  <license>MIT</license>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>x_interfaces</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>
