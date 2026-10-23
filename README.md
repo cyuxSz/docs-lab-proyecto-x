@@ -17,3 +17,7 @@ Si falla instala lo que te pida la terminal.
 - el planner viejo ya no se usa creo
 - falta vision bien
 - muchas cosas mas
+
+## Documentación
+La wiki está en [`openwiki/`](openwiki/index.md). Empieza por el [quickstart](openwiki/quickstart.md) o por el [estado real del código](openwiki/operations/estado.md).
+Cada afirmación cita `archivo:línea`. Para validarla y actualizarla, usa `/actualizar-docs` en Claude Code.

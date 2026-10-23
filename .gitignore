@@ -3,3 +3,7 @@ install/
 log/
 __pycache__/
 *.pyc
+.archify/
+docs/arch/*.finalize*.json
+docs/arch/*.browser-check.json
+docs/arch/*.delivery*.json

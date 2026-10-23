@@ -1,0 +1,1163 @@
+{
+  "schemaVersion": 1,
+  "commit": "04bd83c8c912da095fd1cddbb7e78eed275aca77",
+  "claims": [
+    {
+      "id": "f91b4f3541e3",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`detector` recibe imágenes de `/x/camera/image_raw` y publica `Detection` en `/x/vision/detections` (`detector.py:16-17`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          16,
+          17
+        ],
+        "sha256": "4a0dccc56862745f41f8caf95b929ec1beb8a77df5194cabd69384a3e598a0f4"
+      }
+    },
+    {
+      "id": "454fbb7805e0",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`mission_handler` escucha esas detecciones y publica `Waypoint` en `/x/nav/waypoint` (`mission_handler.py:19-20`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          19,
+          20
+        ],
+        "sha256": "140abd6c408243e49ffcc5d7002fd708125787555c7d7c3ee9ffe006b1aef943"
+      }
+    },
+    {
+      "id": "8824b53a99f1",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`waypoint_follower` combina el waypoint con `/x/odom` y publica `PoseStamped` en `/x/control/setpoint` (`waypoint_follower.py:19-21`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          19,
+          21
+        ],
+        "sha256": "f39d51d2f04202c842ac8e167fe8403084794e452d1e8a7b005913a3affd7fd4"
+      }
+    },
+    {
+      "id": "8d8ac2b44fe0",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`pid_controller` combina el setpoint con `/x/odom` y publica 6 esfuerzos en `/x/thrusters/cmd` (`pid_controller.cpp:14-18`).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          14,
+          18
+        ],
+        "sha256": "bcc11de5cfdf2612adb525dc389b0fa17a3f53116ccf76004abe3555a649b7dc"
+      }
+    },
+    {
+      "id": "ea1481ad0eb3",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`mission_handler` evalúa la misión cada 0.5 s (`mission_handler.py:23`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          23,
+          23
+        ],
+        "sha256": "bae1c8debff5cd20970c8512040120a03f96addf80d7487e846516770a738387"
+      }
+    },
+    {
+      "id": "136b9f11bf4f",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`waypoint_follower` publica setpoints cada 0.1 s (`waypoint_follower.py:22`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          22,
+          22
+        ],
+        "sha256": "1fbe2a0a74416ff89c4c78703634aee8ad7135d768651e9712dceffc54ec367e"
+      }
+    },
+    {
+      "id": "749456b4d6f8",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`pid_controller` corre cada 50 ms con `dt` fijo de 0.05 (`pid_controller.cpp:19`, `pid_controller.cpp:24`).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          19,
+          19
+        ],
+        "sha256": "07468f795b980fef880d32e7dd71c02dd8dbe66e18efa7dd71a97b98c2d15fed"
+      }
+    },
+    {
+      "id": "d7db17c29979",
+      "page": "openwiki/architecture/overview.md",
+      "statement": "`pid_controller` corre cada 50 ms con `dt` fijo de 0.05 (`pid_controller.cpp:19`, `pid_controller.cpp:24`).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          24,
+          24
+        ],
+        "sha256": "90961aa3d7c8c1710c71dcac173c189b2077d07c7461d3b3126f744b4da55ec0"
+      }
+    },
+    {
+      "id": "53a159a08b90",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/camera/image_raw` | `sensor_msgs/Image` | externo (`usb_cam` en real) | `detector` (`detector.py:16`) |",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          16,
+          16
+        ],
+        "sha256": "75a269680383d20acb4a503762148ba64d7b28e444cd160463d29cc6dcfe771b"
+      }
+    },
+    {
+      "id": "f377c667f815",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/vision/detections` | `x_interfaces/Detection` | `detector` (`detector.py:17`) | `mission_handler` (`mission_handler.py:20`) |",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          17,
+          17
+        ],
+        "sha256": "9110e5470b7ee73e931e87f75f2451538ef71e2781ce5b7488455eb90e6eabe9"
+      }
+    },
+    {
+      "id": "6450598e52fd",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/vision/detections` | `x_interfaces/Detection` | `detector` (`detector.py:17`) | `mission_handler` (`mission_handler.py:20`) |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          20,
+          20
+        ],
+        "sha256": "899cfbd436c1e7a8885fcaa46b957db9ddc85776926c7cc97f6155730cb2e5ed"
+      }
+    },
+    {
+      "id": "db63dbda3303",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/nav/waypoint` | `x_interfaces/Waypoint` | `mission_handler` (`mission_handler.py:19`) | `waypoint_follower` (`waypoint_follower.py:19`) |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          19,
+          19
+        ],
+        "sha256": "2bcfdad9e1d5f721d98e60d31a386aa373026083a0d0b6671404cd7ef380239a"
+      }
+    },
+    {
+      "id": "662a57f526f1",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/nav/waypoint` | `x_interfaces/Waypoint` | `mission_handler` (`mission_handler.py:19`) | `waypoint_follower` (`waypoint_follower.py:19`) |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          19,
+          19
+        ],
+        "sha256": "653d56675f827343d1234ed8cfc571bfb9c70a415e89cd5289d8f1e120dc0207"
+      }
+    },
+    {
+      "id": "521c9252b4fe",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/odom` | `nav_msgs/Odometry` | externo | `waypoint_follower` (`waypoint_follower.py:20`), `pid_controller` (`pid_controller.cpp:16-17`) |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          20,
+          20
+        ],
+        "sha256": "f10d9809966cef6bf68b8ca105785bf4bf34aae34f875ff1f6001e6341e54b29"
+      }
+    },
+    {
+      "id": "9a8f29dfc2f8",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/odom` | `nav_msgs/Odometry` | externo | `waypoint_follower` (`waypoint_follower.py:20`), `pid_controller` (`pid_controller.cpp:16-17`) |",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          16,
+          17
+        ],
+        "sha256": "2ddd42b2aa98c1c92efa9ce4b65a6fa7812b7459fffd3acce3f7cc2b26a6e8d0"
+      }
+    },
+    {
+      "id": "a1a2aaad3a12",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/control/setpoint` | `geometry_msgs/PoseStamped` | `waypoint_follower` (`waypoint_follower.py:21`) | `pid_controller` (`pid_controller.cpp:14-15`) |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          21,
+          21
+        ],
+        "sha256": "1745bdeaf754615b92540f6923a2eade3b52c46e82e80815309314d0d86d6673"
+      }
+    },
+    {
+      "id": "886dfc718c91",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/control/setpoint` | `geometry_msgs/PoseStamped` | `waypoint_follower` (`waypoint_follower.py:21`) | `pid_controller` (`pid_controller.cpp:14-15`) |",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          14,
+          15
+        ],
+        "sha256": "7e80a9b18d4bf5c800879952bc56c4e8f2213dc7d3bc40068912bf66098b0e63"
+      }
+    },
+    {
+      "id": "75cfc018cfee",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/thrusters/cmd` | `std_msgs/Float64MultiArray` | `pid_controller` (`pid_controller.cpp:18`) | externo |",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          18,
+          18
+        ],
+        "sha256": "e468903ed16b60a209e69cf9abe0d9ba58b829f4afbe24e2958517b908172b80"
+      }
+    },
+    {
+      "id": "fdee0e34a140",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/x/mission/set` (servicio) | `x_interfaces/SetMission` | — | `mission_handler` (`mission_handler.py:21`) |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          21,
+          21
+        ],
+        "sha256": "6a529b5fdf9d2a65972f1f85153d3d06ef52c1bbb36c6d3462ad7c11ba1a8e11"
+      }
+    },
+    {
+      "id": "52fa23414fde",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "`/planner/goal` | `geometry_msgs/PoseStamped` | `old_planner` (obsoleto) (`old_planner.py:13`) | nadie |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          13,
+          13
+        ],
+        "sha256": "b04a611dcd295977b07cf2268363a3360b687b21cfff3d20f7564d9f8ec78113"
+      }
+    },
+    {
+      "id": "0da763c421f3",
+      "page": "openwiki/architecture/topics.md",
+      "statement": "En real, `usb_cam` se remapea a `/x/camera/image_raw` (`real.launch.py:9`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/real.launch.py",
+        "lines": [
+          9,
+          9
+        ],
+        "sha256": "f973312588e7f7c562c91dd80b1164af8651a883809e7aaaa820605e85dcdd3d"
+      }
+    },
+    {
+      "id": "46f7e0bf485e",
+      "page": "openwiki/operations/estado.md",
+      "statement": "`old_planner`: ningún launch lo ejecuta y publica en un topic sin suscriptores (`old_planner.py:1-2`, `old_planner.py:13`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "c7cdc17f3f51bbb402bbbcaaa1e7f08cd0e86dceb31b1d77e1518ee381efe2e0"
+      }
+    },
+    {
+      "id": "7a3fe305f01e",
+      "page": "openwiki/operations/estado.md",
+      "statement": "`old_planner`: ningún launch lo ejecuta y publica en un topic sin suscriptores (`old_planner.py:1-2`, `old_planner.py:13`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          13,
+          13
+        ],
+        "sha256": "b04a611dcd295977b07cf2268363a3360b687b21cfff3d20f7564d9f8ec78113"
+      }
+    },
+    {
+      "id": "5dcfde109cd1",
+      "page": "openwiki/operations/estado.md",
+      "statement": "`camara_vieja`: la reemplaza el driver de cámara (`camara_vieja.py:1-2`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/camara_vieja.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "9fccaf8fc2be21349c5ac9fe93659207871ebbce5fc579394aa661d7bfbb297b"
+      }
+    },
+    {
+      "id": "e8ebee5d00db",
+      "page": "openwiki/operations/estado.md",
+      "statement": "El yaw recibe error 0 y x/y no se controlan | El sub solo cambia de profundidad | `pid_controller.cpp:25-30` |",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          25,
+          30
+        ],
+        "sha256": "99924389dee39b9be1065f7c4bfc87cfeed9588771d227b6a7d58138cca4187e"
+      }
+    },
+    {
+      "id": "6ccf70cf41ed",
+      "page": "openwiki/operations/estado.md",
+      "statement": "La misión avanza sin esperar a llegar | Los pasos `goto` se saltan en 0.5 s | `mission_handler.py:58-60` |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          58,
+          60
+        ],
+        "sha256": "45943b5dca2eb9382cd544f64f8ca43a9a73c2e9909e51628029e2eae723c0e5"
+      }
+    },
+    {
+      "id": "13c2ad6c3893",
+      "page": "openwiki/operations/estado.md",
+      "statement": "El detector siempre devuelve `gate` | `search: buoy` nunca termina | `detector.py:23` |",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          23,
+          23
+        ],
+        "sha256": "4148898e6945132b15eb75cbf26e6f63aa9933c1f45df89c633ffb498d0104fa"
+      }
+    },
+    {
+      "id": "a417b6250735",
+      "page": "openwiki/operations/estado.md",
+      "statement": "El `timeout` de `search` se ignora | La misión puede quedarse atorada | `mission_handler.py:52-55` |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          52,
+          55
+        ],
+        "sha256": "a0818f145034f8d4a2d2470a9736a592a517d6f6db1ae126019353475d51e7a6"
+      }
+    },
+    {
+      "id": "73abf9941a9f",
+      "page": "openwiki/operations/estado.md",
+      "statement": "Los YAML de parámetros no se cargan | Cambiarlos no tiene efecto | `sim.launch.py:11-14` |",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          11,
+          14
+        ],
+        "sha256": "d64c9be764953be9175e0785aae46b5d93d16b88774f086284872fd9a092afa9"
+      }
+    },
+    {
+      "id": "261c46c6abf2",
+      "page": "openwiki/operations/estado.md",
+      "statement": "`Waypoint.yaw` y `Waypoint.tolerance` (`Waypoint.msg:2-3`).",
+      "evidence": {
+        "path": "src/x_interfaces/msg/Waypoint.msg",
+        "lines": [
+          2,
+          3
+        ],
+        "sha256": "716d3dcee3093e9a3c7de617c0bedfe34e88031db2f05b5536aa6dbcca16452d"
+      }
+    },
+    {
+      "id": "2849bbd8c270",
+      "page": "openwiki/operations/estado.md",
+      "statement": "`max_speed` en `waypoint_follower` (`waypoint_follower.py:15`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          15,
+          15
+        ],
+        "sha256": "4b12c79b9427e94e80ef90dfa7e45b8808b762c55976f9c55610150bc4d2a145"
+      }
+    },
+    {
+      "id": "12db1b2711a2",
+      "page": "openwiki/operations/estado.md",
+      "statement": "`model_path` en `detector` (`detector.py:14`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          14,
+          14
+        ],
+        "sha256": "d0aaf41566fbe062b4f9677c85ddf74e24965a44ff36220e58b5f52d0931b78d"
+      }
+    },
+    {
+      "id": "878494f84e4e",
+      "page": "openwiki/operations/running.md",
+      "statement": "Los YAML de `config/` se instalan (por ejemplo en navegación, `setup.py:13`), pero `sim.launch.py` no se los pasa a los nodos (`sim.launch.py:11-14`). Cada nodo corre con los valores por defecto del código:",
+      "evidence": {
+        "path": "src/x_navigation/setup.py",
+        "lines": [
+          13,
+          13
+        ],
+        "sha256": "d55f99e5988600d1e66ce879df6e16f5ddb877d3311ccf76812cc72b66191a9e"
+      }
+    },
+    {
+      "id": "5acf3f4f203b",
+      "page": "openwiki/operations/running.md",
+      "statement": "Los YAML de `config/` se instalan (por ejemplo en navegación, `setup.py:13`), pero `sim.launch.py` no se los pasa a los nodos (`sim.launch.py:11-14`). Cada nodo corre con los valores por defecto del código:",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          11,
+          14
+        ],
+        "sha256": "d64c9be764953be9175e0785aae46b5d93d16b88774f086284872fd9a092afa9"
+      }
+    },
+    {
+      "id": "b198e9e16739",
+      "page": "openwiki/operations/running.md",
+      "statement": "`x_navigation/config/nav.yaml` | `log_dir: /home/alberto/x_logs` (`nav.yaml:6`) | No. Además, `waypoint_follower` ni siquiera declara `log_dir` (`waypoint_follower.py:15-16`) |",
+      "evidence": {
+        "path": "src/x_navigation/config/nav.yaml",
+        "lines": [
+          6,
+          6
+        ],
+        "sha256": "23a1d02deb7bbf147a8a3ea7ff894727952698be16a16dd56380a98dea6efc91"
+      }
+    },
+    {
+      "id": "a287dacca6c8",
+      "page": "openwiki/operations/running.md",
+      "statement": "`x_navigation/config/nav.yaml` | `log_dir: /home/alberto/x_logs` (`nav.yaml:6`) | No. Además, `waypoint_follower` ni siquiera declara `log_dir` (`waypoint_follower.py:15-16`) |",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          15,
+          16
+        ],
+        "sha256": "7526a912c73088ea51fd8f8cb89a9c21085b9b239d6f88e767f0326207c000ee"
+      }
+    },
+    {
+      "id": "2bcc97d4d7c1",
+      "page": "openwiki/operations/running.md",
+      "statement": "`x_vision/config/vision.yaml` | `model_path: /home/alberto/...` (`vision.yaml:3`) | No, y el modelo tampoco se usa |",
+      "evidence": {
+        "path": "src/x_vision/config/vision.yaml",
+        "lines": [
+          3,
+          3
+        ],
+        "sha256": "cfee74ce9cea67d3047c5864b9a94cb6391e9ebf590b12fc284e38394b5ac1f6"
+      }
+    },
+    {
+      "id": "f5bf04f9a58d",
+      "page": "openwiki/operations/running.md",
+      "statement": "`x_control/config/pid.yaml` | ganancias (`pid.yaml:3-8`) | No, pero coinciden con los valores por defecto |",
+      "evidence": {
+        "path": "src/x_control/config/pid.yaml",
+        "lines": [
+          3,
+          8
+        ],
+        "sha256": "dd26ddf4fd76d966b8a7c113c279cdbbe474bf9e235bac81e063f28a13e62457"
+      }
+    },
+    {
+      "id": "d1c9181792c8",
+      "page": "openwiki/packages/x_bringup.md",
+      "statement": "`sim.launch.py` | Los 4 nodos, con el argumento `mission_file` (`sim.launch.py:10-14`) | En uso |",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          10,
+          14
+        ],
+        "sha256": "bdd186ddfa2eba5a11a690c0cfb4bff0873f7ed40f22fd3bdc27eaa114e37cb4"
+      }
+    },
+    {
+      "id": "d89dae81e100",
+      "page": "openwiki/packages/x_bringup.md",
+      "statement": "`real.launch.py` | `usb_cam` más los mismos 4 nodos, con `mission_1.yaml` fija (`real.launch.py:9-13`) | Sin probar, según su comentario (`real.launch.py:1-2`) |",
+      "evidence": {
+        "path": "src/x_bringup/launch/real.launch.py",
+        "lines": [
+          9,
+          13
+        ],
+        "sha256": "3b134258dec6bea085b6b36d92a25d2b185847c82e84b24f6484634ea79e92bd"
+      }
+    },
+    {
+      "id": "3728a0d9c4af",
+      "page": "openwiki/packages/x_bringup.md",
+      "statement": "`real.launch.py` | `usb_cam` más los mismos 4 nodos, con `mission_1.yaml` fija (`real.launch.py:9-13`) | Sin probar, según su comentario (`real.launch.py:1-2`) |",
+      "evidence": {
+        "path": "src/x_bringup/launch/real.launch.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "08ec9bc233e6dd0fb30c9dd400e5fd51df20d234239fd3315b8e2ef39a617658"
+      }
+    },
+    {
+      "id": "03c88b0c2a5f",
+      "page": "openwiki/packages/x_bringup.md",
+      "statement": "Ninguno de los dos pasa archivos de parámetros a los nodos; solo pasan `mission_file` (`sim.launch.py:11`, `real.launch.py:10`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          11,
+          11
+        ],
+        "sha256": "466c52cc1091d71933845786be3241fe8926f498186aa9fe31e73e090bb9a17e"
+      }
+    },
+    {
+      "id": "417d509f407d",
+      "page": "openwiki/packages/x_bringup.md",
+      "statement": "Ninguno de los dos pasa archivos de parámetros a los nodos; solo pasan `mission_file` (`sim.launch.py:11`, `real.launch.py:10`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/real.launch.py",
+        "lines": [
+          10,
+          10
+        ],
+        "sha256": "a8b2b31f50c18436aee130279dba0d449c1510fa20ea05311c4a35ee89c78d60"
+      }
+    },
+    {
+      "id": "760a8e0ef7c5",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "Tiene dos PID, uno de profundidad y otro de yaw, con ganancias tomadas de parámetros (`pid_controller.cpp:12-13`). La clase `Pid` es un PID clásico con integral sin límite (*anti-windup*) (`pid.hpp:9-14`).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          12,
+          13
+        ],
+        "sha256": "a4c4f2bf30b5dd3b7b975ea99b95d86e2dec94fd5147b8e37b80c60f99193c79"
+      }
+    },
+    {
+      "id": "f721b004278f",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "Tiene dos PID, uno de profundidad y otro de yaw, con ganancias tomadas de parámetros (`pid_controller.cpp:12-13`). La clase `Pid` es un PID clásico con integral sin límite (*anti-windup*) (`pid.hpp:9-14`).",
+      "evidence": {
+        "path": "src/x_control/include/x_control/pid.hpp",
+        "lines": [
+          9,
+          14
+        ],
+        "sha256": "ecb2c4bdc31d5c315d50edc1d4ada322580d88f35dff01ff2fe2822f36cc840e"
+      }
+    },
+    {
+      "id": "668adc0d2d70",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "Error de profundidad = `setpoint.z − odom.z` (`pid_controller.cpp:25-26`).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          25,
+          26
+        ],
+        "sha256": "dbf484b6db8b71bf523383f04e67382ff8c477acb436c35dc54471cd00a1c079"
+      }
+    },
+    {
+      "id": "391042a118ed",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "**El yaw siempre recibe error 0**, así que su salida es 0 (`pid_controller.cpp:27-28`).",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          27,
+          28
+        ],
+        "sha256": "6d0b605fb2f9cb67c76a0c74156efa3fafbb9443a61559b8e694e25213bc125f"
+      }
+    },
+    {
+      "id": "b4b2be54b116",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "La salida son 6 valores: los 4 primeros son yaw con signos alternados y los 2 últimos son *heave* (`pid_controller.cpp:30`). **Pregunta abierta:** ¿qué thruster físico corresponde a cada índice?",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          30,
+          30
+        ],
+        "sha256": "ea4c16529ee08c5de5205d0c1eddc304205067f1e9a32aecd3a7a0580f7fe10e"
+      }
+    },
+    {
+      "id": "28ac6ef3e244",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "**Consecuencia:** el `x` y la `y` del setpoint no entran en ningún cálculo, así que hoy el sub solo sube y baja (`pid_controller.cpp:25-30`). Los pasos `goto` de las misiones no lo desplazan en horizontal.",
+      "evidence": {
+        "path": "src/x_control/src/pid_controller.cpp",
+        "lines": [
+          25,
+          30
+        ],
+        "sha256": "99924389dee39b9be1065f7c4bfc87cfeed9588771d227b6a7d58138cca4187e"
+      }
+    },
+    {
+      "id": "d9d885852982",
+      "page": "openwiki/packages/x_control.md",
+      "statement": "`config/pid.yaml` tiene las mismas ganancias que los valores por defecto (`pid.yaml:3-8`), pero ningún launch lo carga (ver [running](../operations/running.md)).",
+      "evidence": {
+        "path": "src/x_control/config/pid.yaml",
+        "lines": [
+          3,
+          8
+        ],
+        "sha256": "dd26ddf4fd76d966b8a7c113c279cdbbe474bf9e235bac81e063f28a13e62457"
+      }
+    },
+    {
+      "id": "4553b859c539",
+      "page": "openwiki/packages/x_interfaces.md",
+      "statement": "Genera dos mensajes y un servicio (`CMakeLists.txt:6-11`).",
+      "evidence": {
+        "path": "src/x_interfaces/CMakeLists.txt",
+        "lines": [
+          6,
+          11
+        ],
+        "sha256": "b644d866b8b3c8bb2653bfece0fbd7b0f682c652b6b5ff20a1d15e43c0fef8bb"
+      }
+    },
+    {
+      "id": "f8ea29ce68c1",
+      "page": "openwiki/packages/x_interfaces.md",
+      "statement": "**`Waypoint`**: posición `geometry_msgs/Point`, `yaw` y `tolerance` (`Waypoint.msg:1-3`). Ningún nodo lee `yaw` ni `tolerance`: `waypoint_follower` solo usa `position` (`waypoint_follower.py:34`).",
+      "evidence": {
+        "path": "src/x_interfaces/msg/Waypoint.msg",
+        "lines": [
+          1,
+          3
+        ],
+        "sha256": "16900346023428b1dc14d0379b6da1af60c658910c18862ebc08e44cd0a53e8a"
+      }
+    },
+    {
+      "id": "159ce3e80ba5",
+      "page": "openwiki/packages/x_interfaces.md",
+      "statement": "**`Waypoint`**: posición `geometry_msgs/Point`, `yaw` y `tolerance` (`Waypoint.msg:1-3`). Ningún nodo lee `yaw` ni `tolerance`: `waypoint_follower` solo usa `position` (`waypoint_follower.py:34`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          34,
+          34
+        ],
+        "sha256": "3a98c1d2b23d0e671be80569f44a8655a7de77d859aa49a252f936432a7e7115"
+      }
+    },
+    {
+      "id": "da59fee7fcab",
+      "page": "openwiki/packages/x_interfaces.md",
+      "statement": "**`Detection`**: `label`, `confidence` y una caja en píxeles (`Detection.msg:1-7`).",
+      "evidence": {
+        "path": "src/x_interfaces/msg/Detection.msg",
+        "lines": [
+          1,
+          7
+        ],
+        "sha256": "4421dedf2dc7ed84347fa37887c932e3cc42fd55ba6d3c0f3fbe7f126a45eb9e"
+      }
+    },
+    {
+      "id": "b22b9f7ba607",
+      "page": "openwiki/packages/x_interfaces.md",
+      "statement": "**`SetMission`** (servicio): recibe `mission_file` y responde `success` y `message` (`SetMission.srv:1-4`).",
+      "evidence": {
+        "path": "src/x_interfaces/srv/SetMission.srv",
+        "lines": [
+          1,
+          4
+        ],
+        "sha256": "7d59b7e6a1cdd7c3f12e590c5a42b05c2e9d29d461515f50a5d12de06ae2b659"
+      }
+    },
+    {
+      "id": "5d856d03205b",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "Al arrancar carga el archivo del parámetro `mission_file`, `mission_1.yaml` por defecto en el nodo (`mission_handler.py:22`). El launch de simulación lo sobrescribe con `mission_test.yaml` (`sim.launch.py:10-11`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          22,
+          22
+        ],
+        "sha256": "32792f6ca971bbfc03d8f5f444aee62128569a02a0ef37c2d1487b68f1839f06"
+      }
+    },
+    {
+      "id": "441b228700ae",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "Al arrancar carga el archivo del parámetro `mission_file`, `mission_1.yaml` por defecto en el nodo (`mission_handler.py:22`). El launch de simulación lo sobrescribe con `mission_test.yaml` (`sim.launch.py:10-11`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          10,
+          11
+        ],
+        "sha256": "13a03913c38e79116cccb7135a7e5211d94ba553d5d0846199cab6002adc85f4"
+      }
+    },
+    {
+      "id": "fc9ad7ff69ff",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "Busca el archivo en `share/x_mission/missions/` del paquete instalado (`mission_handler.py:26`), así que tras agregar una misión hay que volver a correr `colcon build`.",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          26,
+          26
+        ],
+        "sha256": "05093452971f59d34b1daaa69a0df533a66b3795e72aeb744c03b3af5cb173f8"
+      }
+    },
+    {
+      "id": "74f37a05dea1",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "El servicio `/x/mission/set` carga otra misión (`mission_handler.py:32-38`), y al cargarla el índice vuelve a 0 (`mission_handler.py:29`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          32,
+          38
+        ],
+        "sha256": "efae247bb2ed9ee0ae4194658e3ec5c0197dae794e576d321462d1f2f6941dc3"
+      }
+    },
+    {
+      "id": "8b3f5d6266b8",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "El servicio `/x/mission/set` carga otra misión (`mission_handler.py:32-38`), y al cargarla el índice vuelve a 0 (`mission_handler.py:29`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          29,
+          29
+        ],
+        "sha256": "4532391d6199f66c89faf6d8a6a60dc9102a00b86c911e89737d60d3b1b529be"
+      }
+    },
+    {
+      "id": "94aa87f93fe2",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`dive` | Publica un waypoint solo con `z = depth` | `mission_handler.py:48-49` |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          48,
+          49
+        ],
+        "sha256": "84c56255ed6c17eaf91b39e88b1870935d75106e25dcc5eb3a103f4dc0db73c1"
+      }
+    },
+    {
+      "id": "ba986d8e0e2b",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`goto` | Publica un waypoint en `x, y, z` | `mission_handler.py:50-51` |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          50,
+          51
+        ],
+        "sha256": "acca2d91a557059a78b0ec98047c63a529edf1fafc1f9c21f32a3c0611de113a"
+      }
+    },
+    {
+      "id": "ccc6a2cd342c",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`search` | No publica nada; avanza cuando la última detección tiene ese `label` | `mission_handler.py:52-55` |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          52,
+          55
+        ],
+        "sha256": "a0818f145034f8d4a2d2470a9736a592a517d6f6db1ae126019353475d51e7a6"
+      }
+    },
+    {
+      "id": "fdcc267a1214",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`surface` | Publica un waypoint con `z = 0` | `mission_handler.py:56-57` |",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          56,
+          57
+        ],
+        "sha256": "f4c85b56d5c4bea032b02acc710757b26d06ef80741982824e06368c53b7a8bc"
+      }
+    },
+    {
+      "id": "6e2c09ae90bb",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`dive`, `goto` y `surface` avanzan al siguiente paso en el mismo tick en que publican, sin esperar a que el sub llegue (`mission_handler.py:58-60`). Con un tick cada 0.5 s, una misión de 5 pasos sin `search` se \"termina\" en unos 2.5 s.",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          58,
+          60
+        ],
+        "sha256": "45943b5dca2eb9382cd544f64f8ca43a9a73c2e9909e51628029e2eae723c0e5"
+      }
+    },
+    {
+      "id": "f58b9e63a144",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "El `timeout` de los pasos `search` en el YAML (`mission_1.yaml:4`) no se lee en ningún lado: si la detección no llega, la misión se queda en ese paso para siempre (`mission_handler.py:52-55`).",
+      "evidence": {
+        "path": "src/x_mission/missions/mission_1.yaml",
+        "lines": [
+          4,
+          4
+        ],
+        "sha256": "5b86064aa1b4926dd186c9468744ea9160e4efcae359a017b682d6f818aa8a8f"
+      }
+    },
+    {
+      "id": "81a3b1e8ffb8",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "El `timeout` de los pasos `search` en el YAML (`mission_1.yaml:4`) no se lee en ningún lado: si la detección no llega, la misión se queda en ese paso para siempre (`mission_handler.py:52-55`).",
+      "evidence": {
+        "path": "src/x_mission/x_mission/mission_handler.py",
+        "lines": [
+          52,
+          55
+        ],
+        "sha256": "a0818f145034f8d4a2d2470a9736a592a517d6f6db1ae126019353475d51e7a6"
+      }
+    },
+    {
+      "id": "553ca87b597f",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`mission_1.yaml`: compuerta y boya (`mission_1.yaml:1-7`). Hoy se queda atorada en el paso `search: buoy` (`mission_1.yaml:6`), porque `detector` solo publica `gate` (ver [x_vision](x_vision.md)).",
+      "evidence": {
+        "path": "src/x_mission/missions/mission_1.yaml",
+        "lines": [
+          1,
+          7
+        ],
+        "sha256": "f45f51c5b9467849bcfd59c8526f050ef8d190a7d483b934a69526b8ff7424eb"
+      }
+    },
+    {
+      "id": "c4c6a3fb865d",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`mission_1.yaml`: compuerta y boya (`mission_1.yaml:1-7`). Hoy se queda atorada en el paso `search: buoy` (`mission_1.yaml:6`), porque `detector` solo publica `gate` (ver [x_vision](x_vision.md)).",
+      "evidence": {
+        "path": "src/x_mission/missions/mission_1.yaml",
+        "lines": [
+          6,
+          6
+        ],
+        "sha256": "a265390434b36bdfb80a70ccd8f297fa542c666609c6b884285123fb890c2cba"
+      }
+    },
+    {
+      "id": "d83d5e522608",
+      "page": "openwiki/packages/x_mission.md",
+      "statement": "`mission_test.yaml`: cuadrado de 2 m a 0.5 m de profundidad, sin pasos `search` (`mission_test.yaml:1-7`).",
+      "evidence": {
+        "path": "src/x_mission/missions/mission_test.yaml",
+        "lines": [
+          1,
+          7
+        ],
+        "sha256": "77736b0063da037173190dd9df6b4b84a72c46e1026674d23699e2b80bca0d8e"
+      }
+    },
+    {
+      "id": "4efadac6e223",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Hasta tener waypoint y odometría no publica nada (`waypoint_follower.py:31-32`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          31,
+          32
+        ],
+        "sha256": "800047ee8b06b61d1c08a8573b092e52f0f30e2bf1086c06726068128beb6656"
+      }
+    },
+    {
+      "id": "56adaa8146af",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "El setpoint es un punto sobre la recta hacia el waypoint, a `lookahead` metros como máximo de la posición actual (`waypoint_follower.py:35-42`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          35,
+          42
+        ],
+        "sha256": "2b3040e2b3b75ef2108e058ff2945f47db699f26172d1e1061343270b2792656"
+      }
+    },
+    {
+      "id": "58b06e6e24df",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Declara `max_speed` pero no lo usa en ningún cálculo (`waypoint_follower.py:15`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          15,
+          15
+        ],
+        "sha256": "4b12c79b9427e94e80ef90dfa7e45b8808b762c55976f9c55610150bc4d2a145"
+      }
+    },
+    {
+      "id": "e587c20768ef",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "No pasa orientación: el `PoseStamped` solo lleva posición, en el frame `odom` (`waypoint_follower.py:39-42`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/waypoint_follower.py",
+        "lines": [
+          39,
+          42
+        ],
+        "sha256": "a8b51e09dcfdee71b1530c152ff426b222265e272c7d000c2d6de7ab9d953e59"
+      }
+    },
+    {
+      "id": "e06f4721529b",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Su propio comentario dice que nadie lo lanza (`old_planner.py:1-2`), y ningún launch lo incluye (`sim.launch.py:11-14`, `real.launch.py:9-13`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "c7cdc17f3f51bbb402bbbcaaa1e7f08cd0e86dceb31b1d77e1518ee381efe2e0"
+      }
+    },
+    {
+      "id": "395f560db815",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Su propio comentario dice que nadie lo lanza (`old_planner.py:1-2`), y ningún launch lo incluye (`sim.launch.py:11-14`, `real.launch.py:9-13`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          11,
+          14
+        ],
+        "sha256": "d64c9be764953be9175e0785aae46b5d93d16b88774f086284872fd9a092afa9"
+      }
+    },
+    {
+      "id": "56ff9a3ac98f",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Su propio comentario dice que nadie lo lanza (`old_planner.py:1-2`), y ningún launch lo incluye (`sim.launch.py:11-14`, `real.launch.py:9-13`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/real.launch.py",
+        "lines": [
+          9,
+          13
+        ],
+        "sha256": "3b134258dec6bea085b6b36d92a25d2b185847c82e84b24f6484634ea79e92bd"
+      }
+    },
+    {
+      "id": "015bfcde8787",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Publica metas aleatorias en `/planner/goal`, un topic que ningún nodo escucha (`old_planner.py:13`, `old_planner.py:18-20`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          13,
+          13
+        ],
+        "sha256": "b04a611dcd295977b07cf2268363a3360b687b21cfff3d20f7564d9f8ec78113"
+      }
+    },
+    {
+      "id": "472558f03f1d",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Publica metas aleatorias en `/planner/goal`, un topic que ningún nodo escucha (`old_planner.py:13`, `old_planner.py:18-20`).",
+      "evidence": {
+        "path": "src/x_navigation/x_navigation/old_planner.py",
+        "lines": [
+          18,
+          20
+        ],
+        "sha256": "309853481c8484e196caaded8f03e648204b74bc0ee933708967008d3556e179"
+      }
+    },
+    {
+      "id": "be515db26360",
+      "page": "openwiki/packages/x_navigation.md",
+      "statement": "Sigue registrado como ejecutable (`setup.py:20`). Se puede borrar junto con esa línea.",
+      "evidence": {
+        "path": "src/x_navigation/setup.py",
+        "lines": [
+          20,
+          20
+        ],
+        "sha256": "525a6666fbbf94e3587b36bd7d193fecc7937f9ee22ff3d3262a6dcdec4745ad"
+      }
+    },
+    {
+      "id": "4579f0b273b9",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Declara `model_path` pero no carga ningún modelo (`detector.py:14`, `detector.py:21`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          14,
+          14
+        ],
+        "sha256": "d0aaf41566fbe062b4f9677c85ddf74e24965a44ff36220e58b5f52d0931b78d"
+      }
+    },
+    {
+      "id": "84f3fe617c77",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Declara `model_path` pero no carga ningún modelo (`detector.py:14`, `detector.py:21`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          21,
+          21
+        ],
+        "sha256": "f8056a30aa654c0894afc8bcf18ce153bda9e8dfa1217add0403f6bad47109dc"
+      }
+    },
+    {
+      "id": "42bd928ec4dc",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Con cada imagen publica una detección fija: `label='gate'`, confianza 0.7 y la caja centrada en la mitad de la imagen (`detector.py:22-25`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          22,
+          25
+        ],
+        "sha256": "0573e810efa4f21a5e2fe7e0abab9738de626627df7c3db2387eb3f570fb7ca2"
+      }
+    },
+    {
+      "id": "bef819093567",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Como 0.7 ≥ 0.6 (umbral por defecto), publica en **cada** frame (`detector.py:13`, `detector.py:24`). Por eso los pasos `search: gate` pasan siempre y los de `search: buoy` nunca.",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          13,
+          13
+        ],
+        "sha256": "c5556351f3f9914d4135847ff0bdea4a3233f781a7d78b62b0fc584c9116a2d7"
+      }
+    },
+    {
+      "id": "dce90ba8b978",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Como 0.7 ≥ 0.6 (umbral por defecto), publica en **cada** frame (`detector.py:13`, `detector.py:24`). Por eso los pasos `search: gate` pasan siempre y los de `search: buoy` nunca.",
+      "evidence": {
+        "path": "src/x_vision/x_vision/detector.py",
+        "lines": [
+          24,
+          24
+        ],
+        "sha256": "c5dcf258a1133c31272c03d1b19fc4880682a82bdaf75a58925748dadcbfc4f5"
+      }
+    },
+    {
+      "id": "8d90e92afe4c",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Su comentario dice que ya no se usa, porque el driver publica directo en `/x/camera/image_raw` (`camara_vieja.py:1-2`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/camara_vieja.py",
+        "lines": [
+          1,
+          2
+        ],
+        "sha256": "9fccaf8fc2be21349c5ac9fe93659207871ebbce5fc579394aa661d7bfbb297b"
+      }
+    },
+    {
+      "id": "0035afb891fe",
+      "page": "openwiki/packages/x_vision.md",
+      "statement": "Abre la cámara 0 con OpenCV y muestra una ventana; no es un nodo ROS (`camara_vieja.py:6-14`).",
+      "evidence": {
+        "path": "src/x_vision/x_vision/camara_vieja.py",
+        "lines": [
+          6,
+          14
+        ],
+        "sha256": "8c2a1054a7bd06fe3a44997c78765a377ef46ae497e604e383853b06450b3f9c"
+      }
+    },
+    {
+      "id": "ed5bd7533bdf",
+      "page": "openwiki/quickstart.md",
+      "statement": "El launch de simulación arranca 4 nodos: `mission_handler`, `waypoint_follower`, `pid_controller` y `detector` (`sim.launch.py:11-14`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          11,
+          14
+        ],
+        "sha256": "d64c9be764953be9175e0785aae46b5d93d16b88774f086284872fd9a092afa9"
+      }
+    },
+    {
+      "id": "3dfa198d1b3b",
+      "page": "openwiki/quickstart.md",
+      "statement": "Si no se indica misión, usa `mission_test.yaml` (`sim.launch.py:10`).",
+      "evidence": {
+        "path": "src/x_bringup/launch/sim.launch.py",
+        "lines": [
+          10,
+          10
+        ],
+        "sha256": "225bc4d606033e8d3e1a1c6ba9d2d83aaad9da8aec4be2f9096caeb6b0f6bca0"
+      }
+    }
+  ]
+}
