@@ -1,6 +1,7 @@
 ---
 type: component
 title: x_vision
+owner: "@cyuxSz"
 description: Detección con la cámara frontal.
 ---
 

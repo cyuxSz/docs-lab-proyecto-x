@@ -1,6 +1,7 @@
 ---
 type: component
 title: x_control
+owner: "@cyuxSz"
 description: PID de profundidad y yaw hacia los 6 thrusters.
 ---
 

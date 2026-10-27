@@ -1,6 +1,7 @@
 ---
 type: component
 title: x_mission
+owner: "@cyuxSz"
 description: Máquina de estados que recorre las misiones en YAML.
 ---
 

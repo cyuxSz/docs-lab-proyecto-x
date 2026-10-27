@@ -1,0 +1,25 @@
+# Avisa al portal de documentación (repo docs-site-lab en Vercel) que la documentación cambió.
+# Requiere el secret DOCS_SITE_DEPLOY_HOOK con la URL del Deploy Hook del proyecto en Vercel.
+name: notify-docs-site
+
+on:
+  push:
+    branches: [main]
+    paths: ["openwiki/**", "docs/arch/**"]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar el rebuild del portal
+        env:
+          HOOK: ${{ secrets.DOCS_SITE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::warning::Falta el secret DOCS_SITE_DEPLOY_HOOK; el portal no se actualizó."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK" > /dev/null && echo "Portal notificado."

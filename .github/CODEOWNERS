@@ -1,0 +1,8 @@
+# Responsables de revisar cada parte. GitHub los pide como revisores automáticamente.
+# En el repo real, cada línea apunta al responsable del paquete (o a un equipo de la org).
+
+*                                  @cyuxSz
+/openwiki/                         @cyuxSz
+/src/x_control/                    @cyuxSz
+/openwiki/packages/x_control.md    @cyuxSz
+/tools/wiki_claims.py              @cyuxSz
